@@ -2,21 +2,21 @@ package stack;
 import java.util.Stack;
 
 public class NextSmall {
-    
+
     public int[] NextSmallToRight(int [] arr){
         Stack<Integer> stack = new Stack<Integer>();
         int NextSmall [] = new int[arr.length];
         for(int i = arr.length-1 ; i >= 0 ; i--){
-            while(!stack.isEmpty() && stack.peek() >= arr[i]){
+            while(!stack.isEmpty() && arr[stack.peek()] >= arr[i]){
                 stack.pop();
             }
 
             if(stack.isEmpty()){
                 NextSmall[i] = arr.length;
             } else {
-                NextSmall[i] = i+1;
+                NextSmall[i] = stack.peek();
             }
-            stack.push(arr[i]);
+            stack.push(i);
         }
         System.out.print('{');
         for(int i = 0 ; i < NextSmall.length ; i++){
@@ -31,16 +31,16 @@ public class NextSmall {
         Stack<Integer> stack = new Stack<Integer>();
         int NextSmall [] = new int[arr.length];
         for(int i = 0 ; i < arr.length ; i++){
-            while(!stack.isEmpty() && stack.peek() >= arr[i]){
+            while(!stack.isEmpty() && arr[stack.peek()] >= arr[i]){
                 stack.pop();
             }
 
             if(stack.isEmpty()){
                 NextSmall[i] = -1;
             } else {
-                NextSmall[i] = i-1;
+                NextSmall[i] = stack.peek();
             }
-            stack.push(arr[i]);
+            stack.push(i);
         }
         System.out.print('{');
         for(int i = 0 ; i < NextSmall.length ; i++){
